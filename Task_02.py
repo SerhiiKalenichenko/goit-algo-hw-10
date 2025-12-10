@@ -1,5 +1,4 @@
 import numpy as np
-import scipy.integrate as spi
 
 def f(x):
     return x ** 2
@@ -13,8 +12,9 @@ y_rand = f(x_rand)
 
 integral_mc = (b - a) * np.mean(y_rand)
 
-integral_quad, error_quad = spi.quad(f, a, b)
+# Аналітичне значення інтеграла f(x)=x² → x³/3
+integral_exact = (b**3 / 3) - (a**3 / 3)
 
 print("Метод Монте-Карло:", integral_mc)
-print("Quad:", integral_quad)
-print("Похибка:", abs(integral_mc - integral_quad))
+print("Аналітичне:", integral_exact)
+print("Похибка:", abs(integral_mc - integral_exact))
